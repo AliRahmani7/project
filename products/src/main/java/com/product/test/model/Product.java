@@ -15,13 +15,6 @@ public class Product {
     public Product()
     {}
     
-	/*public Product(int id, int productId,String productName, String productDescription, String category) {
-		this.id = id;
-		this.productId=productId;
-		this.productName = productName;
-		this.productDescription = productDescription;
-		this.category = category;
-	}*/
 	public Product(int productId,String productName, String productDescription, String category) {
 		//this.id = id;
 		this.productId=productId;

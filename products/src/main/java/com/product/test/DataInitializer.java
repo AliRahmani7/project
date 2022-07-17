@@ -29,7 +29,8 @@ public class DataInitializer implements CommandLineRunner
                 new Product(103, "iPhon", "The silky, soft-touch finish of the silicone exterior feels great in your hand", "Electronics"),
                 new Product(104, "Pillow", "The poly fiber filling and the top quality materia", "Bedding"),
                 new Product(105, "Fridge", "Energy saving and environmentally friendly", "Home Appliances"),
-                new Product(106, "Desk", "Table with 2 open shelves ideal for study, bedroom, living room", "Furnitue"));
+                new Product(106, "Desk", "Table with 2 open shelves ideal for study, bedroom, living room", "Furnitue"),
+                new Product(107, "Fax", "The best fax machine", "Electronics"));
     }
     public List<Stock> stockData()
     {
@@ -39,7 +40,8 @@ public class DataInitializer implements CommandLineRunner
                 new Stock(803, 103, 676),
                 new Stock(804, 104, 96),
                 new Stock(805, 105, 36),
-                new Stock(806, 106, 88));
+                new Stock(806, 106, 88),
+                new Stock(807, 107, 0)); //out of stock
     }
     @Override
     public void run(String... args) throws Exception

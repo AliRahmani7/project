@@ -54,8 +54,7 @@ public class ProductController
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
         return responseEntityMono;
     }
-
-     //////////////////////    TODO   /////////////////////////////
+///////////////////////////////   Inventory    //////////////////////////////////
     @GetMapping(path = "/inventory/{productId}")
     public Mono<ResponseEntity<Inventory>> GetProductId(@PathVariable int productId)
     {
@@ -71,7 +70,11 @@ public class ProductController
     {
         return inventoryRepository.findStockByQuantity(quantity);
     }
-
+    @GetMapping(path = "/inventory")
+    public Flux<Inventory> GetInventory()
+    {
+        return inventoryRepository.findAllStocks();
+    }
 
     private boolean validateProduct(Product x)
     {

@@ -14,6 +14,8 @@ import reactor.core.publisher.Mono;
 public interface InventoryRepository extends ReactiveCrudRepository<Inventory, Object>{
     @Query("SELECT p.product_name,s.quantity FROM product p INNER JOIN stock s ON p.product_id = s.product_id WHERE p.product_id = $1")
     Mono<Inventory> findStockByProductId(Integer productId);
-    @Query("SELECT p.product_name,s.quantity FROM product p INNER JOIN stock s ON p.product_id = s.product_id WHERE s.quantity > $1")
+    @Query("SELECT p.product_name,p.product_description,p.category,s.quantity FROM product p INNER JOIN stock s ON p.product_id = s.product_id WHERE s.quantity > $1")
     Flux<Inventory> findStockByQuantity(Long quantity);
+    @Query("SELECT p.product_name,s.quantity FROM product p INNER JOIN stock s ON p.product_id = s.product_id WHERE s.quantity > 0")
+    Flux<Inventory> findAllStocks();
 }

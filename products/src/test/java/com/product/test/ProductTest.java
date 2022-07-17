@@ -34,20 +34,4 @@ public class ProductTest {
 
     @MockBean
     private ProductRepository productRepository;;
-
-    @Test
-    public void testGetProductById() {
-        Product Product = new Product(101, "Laptop", "Ultra-light weight body with Ultra portability Laptop", "Electronics");
-        Mono<Product> productMono = Mono.just(Product);
-
-        when(productRepository.findById(1)).thenReturn(productMono);
-
-        webTestClient.get()
-                .uri("/products/101")
-                //.accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody(Product.class);
-                //.value(Product1 -> Product., equalTo(23));
-    }
 }

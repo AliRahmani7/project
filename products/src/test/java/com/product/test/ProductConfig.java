@@ -17,25 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class ProductConfig {
-
     @Bean
     ProductRepository productRepository() {
         return new ProductRepository();
-    }
-
-    @Bean
-    RouterFunction<ServerResponse> getAllProductsRoute() {
-        return route(GET("http://localhost:8080/products"), req -> ok().body(productRepository().findAll(), Product.class));
-    }
-
-    @Bean
-    RouterFunction<ServerResponse> getProductByIdRoute() {
-    	 return route(GET("/employees/{id}"), req -> ok().body(productRepository().findById(req.pathVariable("id")), Product.class));
-    }
-
-    @Bean
-    RouterFunction<ServerResponse> composedRoutes() {
-        return route(GET("http://localhost:8080/products"), req -> ok().body(productRepository().findAll(), Product.class))
-            .and(route(GET("http://localhost:8080/products/{id}"), req -> ok().body(productRepository().findById(req.pathVariable("id")), Product.class)));
     }
 }

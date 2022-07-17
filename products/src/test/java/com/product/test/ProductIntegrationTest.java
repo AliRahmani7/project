@@ -20,7 +20,6 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @EnableAutoConfiguration
-//@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = ProductIntegrationTest.class)
 public class ProductIntegrationTest {
 
@@ -29,22 +28,5 @@ public class ProductIntegrationTest {
     @MockBean
     private ProductRepository productRepository;
     @Autowired
-    private WebTestClient testClient;
-    
-    @Test
-    void givenProductId_whenGetProductById() 
-    {
-    	WebTestClient client = WebTestClient.bindToRouterFunction(config.getProductByIdRoute()).build();
-        Product product = new Product(101, "Laptop", "Ultra-light weight body with Ultra portability Laptop", "Electronics");
-
-        given(productRepository.findProductById(101)).willReturn(Mono.just(product));
-
-        client.get()
-        .uri("/products/101")
-        .exchange()
-        .expectStatus()
-        .isOk()
-        .expectBody(Product.class)
-        .isEqualTo(product);
-    }  
+    private WebTestClient client;   
 }

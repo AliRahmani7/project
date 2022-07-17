@@ -13,8 +13,8 @@ import reactor.core.publisher.Mono;
 @Repository
 //public interface ProductRepository extends ReactiveMongoRepository<Product, String>{
 public interface ProductRepository extends ReactiveCrudRepository<Product, Integer>{
-    @Query("SELECT * FROM Product WHERE product_name = :name")  // @Query("select id, name from product where name = $1")
-    Mono<Product> findProductByName(String Name);  
+    @Query("SELECT * FROM Product WHERE product_name = :name") 
+    Mono<Product> findProductByName(String name);  
     @Query("SELECT * FROM Product WHERE product_id = $1")
     Mono<Product> findProductById(Integer productId);
 }

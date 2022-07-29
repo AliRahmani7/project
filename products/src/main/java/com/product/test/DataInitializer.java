@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class DataInitializer implements CommandLineRunner
@@ -24,13 +25,13 @@ public class DataInitializer implements CommandLineRunner
     public List<Product> productData()
     {
         return Arrays.asList(
-        		new Product(101, "Laptop", "Ultra-light weight body with Ultra portability Laptop", "Electronics"),
-                new Product(102, "Shoe", "Comfortable fabric lining and lightly-padded tongue for added support", "Clothing"),
+        		new Product(101, "laptop", "Ultra-light weight body with Ultra portability Laptop", "Electronics"),
+                new Product(102, "shoe", "Comfortable fabric lining and lightly-padded tongue for added support", "Clothing"),
                 new Product(103, "iPhon", "The silky, soft-touch finish of the silicone exterior feels great in your hand", "Electronics"),
-                new Product(104, "Pillow", "The poly fiber filling and the top quality materia", "Bedding"),
-                new Product(105, "Fridge", "Energy saving and environmentally friendly", "Home Appliances"),
-                new Product(106, "Desk", "Table with 2 open shelves ideal for study, bedroom, living room", "Furnitue"),
-                new Product(107, "Fax", "The best fax machine", "Electronics"));
+                new Product(104, "pillow", "The poly fiber filling and the top quality materia", "Bedding"),
+                new Product(105, "fridge", "Energy saving and environmentally friendly", "Home Appliances"),
+                new Product(106, "desk", "Table with 2 open shelves ideal for study, bedroom, living room", "Furnitue"),
+                new Product(107, "fax", "The best fax machine", "Electronics"));
     }
     public List<Stock> stockData()
     {

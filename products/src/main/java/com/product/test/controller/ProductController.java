@@ -2,7 +2,6 @@ package com.product.test.controller;
 
 import com.product.test.model.Inventory;
 import com.product.test.model.Product;
-import com.product.test.model.Stock;
 import com.product.test.repository.InventoryRepository;
 import com.product.test.repository.ProductRepository;
 import com.product.test.repository.StockRepository;
@@ -23,12 +22,19 @@ public class ProductController
 	StockRepository stockRepository;
     @Autowired
 	InventoryRepository inventoryRepository;
-    
+
 	@GetMapping("/")					
 	String testServer() {
-	    return "Server Running !";
+		StringBuilder link = new StringBuilder("Server Running !");link.append("<br>");
+		link.append("<a href=\"/products\">http://localhost:8080/products</a>\n");link.append("<br>");
+		link.append( "<a href=\"/products/101\">http://localhost:8080/products/101</a>");link.append("<br>");
+		link.append( "<a href=\"/productname/laptop\">http://localhost:8080/productname/laptop</a>");link.append("<br>");
+		link.append( "<a href=\"/inventory\">http://localhost:8080/inventory</a>");link.append("<br>");
+		link.append( "<a href=\"/inventory/101\">http://localhost:8080/inventory/101</a>");link.append("<br>");
+		link.append( "<a href=\"/quantity/64\">http://localhost:8080/quantity/64</a>");link.append("<br>");
+	    return link.toString();
 	}
-	
+
     @GetMapping(path = "/products")
     public Flux<Product> getAllProducts()
     {

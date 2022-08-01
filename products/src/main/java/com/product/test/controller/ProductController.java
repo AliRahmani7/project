@@ -83,7 +83,7 @@ public class ProductController
         return inventoryRepository.findAllStocks();
     }
     @GetMapping(path = "/outofstock")
-    public Flux<Inventory> OutOfStock()//Subquery return only one record.Generate error if there are more than one record with quantity = 0 in Stock table
+    public Flux<Inventory> OutOfStock()
     {
         return inventoryRepository.outOfStock();
     }

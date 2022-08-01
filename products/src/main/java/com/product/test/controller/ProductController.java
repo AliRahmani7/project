@@ -32,7 +32,7 @@ public class ProductController
 		link.append( "<a href=\"/inventory\">http://localhost:8080/inventory</a>");link.append("<br>");
 		link.append( "<a href=\"/inventory/101\">http://localhost:8080/inventory/101</a>");link.append("<br>");
 		link.append( "<a href=\"/quantity/64\">http://localhost:8080/quantity/64</a>");link.append("<br>");
-		link.append( "<a href=\"/outofstuck\">http://localhost:8080/outofstuck</a>");link.append("<br>");
+		link.append( "<a href=\"/outofstock\">http://localhost:8080/outofstock</a>");link.append("<br>");
 	    return link.toString();
 	}
 
@@ -82,10 +82,10 @@ public class ProductController
     {
         return inventoryRepository.findAllStocks();
     }
-    @GetMapping(path = "/outofstuck")
-    public Flux<Inventory> OutOfStouck()//Subquery return only one record.Generate error if there are more than one record with quantity = 0 in Stock table
+    @GetMapping(path = "/outofstock")
+    public Flux<Inventory> OutOfStock()//Subquery return only one record.Generate error if there are more than one record with quantity = 0 in Stock table
     {
-        return inventoryRepository.outOfStuck();
+        return inventoryRepository.outOfStock();
     }
 
     private boolean validateProduct(Product x)

@@ -18,5 +18,6 @@ public interface InventoryRepository extends ReactiveCrudRepository<Inventory, O
     Flux<Inventory> findStockByQuantity(Long quantity);
     @Query("SELECT p.product_name,s.quantity FROM product p INNER JOIN stock s ON p.product_id = s.product_id WHERE s.quantity > 0")
     Flux<Inventory> findAllStocks();
-    //Mono<Inventory> findAllStocks();
+    @Query("SELECT p.product_name FROM product p WHERE p.product_id =(SELECT s.product_id from stock s WHERE s.quantity = 0)")//Scalar subquery contains only one row
+    Flux<Inventory> outOfStuck();
 }
